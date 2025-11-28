@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// Функция-компаратор для сортировки целых чисел по возрастанию
 int compare_ints(const void* a, const void* b) {
     int arg1 = *(const int*)a;
     int arg2 = *(const int*)b;
@@ -21,7 +20,7 @@ int main() {
     for (size_t i = 0; i < numbers_size; ++i) {
         printf("%d ", numbers[i]);
     }
-    // Вывод: 1 2 5 8 9
+    
 
     return 0;
 }
