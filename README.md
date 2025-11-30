@@ -145,3 +145,26 @@ git diff --staged - показывает изменения добавленны
 10) git log --oneline –graph покажет историю с коммитом слияния, соединяющим обе ветки
 11) Запушим изменения
 ### ![Задание 10-11](photo_conflict/photo4.png)
+
+## Починим Merge конфликты для сортировки MergeSort на python.
+1) Находясь в ветке master создадим файл mergesort.py с содержимым из base.py
+2) Проиндексируем файл и закоммитим
+3) Создадим новую ветку Mergesort-Impl и переключимся на нее.
+### ![Задание 1-3](photo_MergeSort/photo1.png)
+
+4) Содержимое файла mergesort.py заменим на код из righty.py
+5) Коммитим изменения.
+6) Переключаемся на master
+### ![Задание 4-6](photo_MergeSort/photo2.png)
+
+7) меняем все содержимое mergesort.py на lefty.py. Коммитим изменения.
+### ![Задание 7](photo_MergeSort/photo3.png)
+
+8) git log --oneline –graph показывает ветку main c разными реализациями файла mergesort.py
+9) git branch указывает на ветку в которой мы находимся
+### ![Задание 8-9](photo_MergeSort/photo4.png)
+
+10) Необходимо смержить Mergesort-Impl в master.
+11) После исправления всех merge конфликтов запушить в master изменения.
+12) Запушить документ с результатами вашей работы
+### ![Задание 10-12](photo_MergeSort/photo5.png)
