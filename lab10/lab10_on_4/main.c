@@ -18,4 +18,8 @@ int main() {
     struct fraction *div= division(fraction1,fraction2);
     printf("Деление дробь: ");
     print_func(div);
+    free(fraction1);
+    free(fraction2);
+    free(multi);
+    free(div);
 }
