@@ -1,0 +1,15 @@
+# Системные файлы macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Виртуальное окружение Python
+.venv/
+venv/
+env/
+__pycache__/
+
+
+# Другие временные файлы
+.idea/
+.vscode/
