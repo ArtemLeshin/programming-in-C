@@ -1,0 +1,278 @@
+% !TEX program = xelatex
+\documentclass[a4paper,14pt,oneside,openany]{memoir}
+
+%%% Задаем поля, отступы и межстрочный интервал %%%
+
+\usepackage[left=30mm, right=15mm, top=20mm, bottom=20mm]{geometry}
+\pagestyle{plain}
+\parindent=1.25cm
+\usepackage{indentfirst}
+
+%%% Задаем языковые параметры и шрифт %%%
+
+\usepackage[english,russian]{babel}
+\babelfont[russian]{rm}{Times New Roman}
+\babelfont[russian]{tt}{Courier New}
+
+%%% Задаем стиль заголовков и подзаголовков в тексте %%%
+
+\setsecnumdepth{subsection}
+\renewcommand*{\chapterheadstart}{}
+\renewcommand*{\printchaptername}{}
+\renewcommand*{\chapnumfont}{\normalfont\bfseries}
+\renewcommand*{\afterchapternum}{\hspace{1em}}
+\renewcommand*{\printchaptertitle}{\normalfont\bfseries\centering\MakeUppercase}
+\setbeforesecskip{20pt}
+\setaftersecskip{20pt}
+\setsecheadstyle{\raggedright\normalfont\bfseries}
+\setbeforesubsecskip{20pt}
+\setaftersubsecskip{20pt}
+\setsubsecheadstyle{\raggedright\normalfont\bfseries}
+
+%%% Исправление нумерации секций %%%
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+%%% Сквозная нумерация рисунков и таблиц %%%
+
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+%%% Выравнивание и переносы %%%
+
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\clubpenalty=10000
+\widowpenalty=10000
+
+%%% Задаем параметры оформления рисунков и таблиц %%%
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{{photo/}}
+\captionsetup[figure]{font=small, width=\textwidth, name=Рисунок, justification=centering}
+\captiondelim{ --- }
+\usepackage[section]{placeins}
+
+%%% Задаем параметры ссылок и гиперссылок %%% 
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    citecolor=red
+}
+
+%%% Настраиваем отображение списков %%%
+
+\usepackage{enumitem}
+\renewcommand*{\labelitemi}{\normalfont{--}}
+\setlist{noitemsep, leftmargin=*}
+
+\begin{document}
+
+% Титульный лист (без номера страницы)
+\thispagestyle{empty}
+
+\begin{center}
+    МИНИСТЕРСТВО ЦИФРОВОГО РАЗВИТИЯ, СВЯЗИ И МАССОВЫХ \\ КОММУНИКАЦИЙ \\ РОССИЙСКОЙ ФЕДЕРАЦИИ
+
+    \vspace{20pt}
+
+    Федеральное государственное бюджетное образовательное учреждение \\ высшего образования \\
+    "Сибирский государственный университет телекоммуникаций и \\ информатики"
+
+    \vspace{20pt}
+
+    Кафедра телекоммуникационных систем и вычислительных средств \\ (ТС и ВС)
+\end{center}
+
+\vfill
+
+\begin{center}
+    Практическая работа №9 \\
+    по дисциплине \\
+    \textit{"Web-технологии"}
+
+    \vspace{20pt}
+
+    по теме: \\
+    \uppercase{Автоматизация сбора данных о клиентах Linux с помощью Ansible}
+\end{center}
+
+\vfill
+
+\noindent Студент: \\
+\textit{Группа ИКС-532 \hfill А.С. Лёшин}
+
+\vspace{20pt}
+
+\noindent Преподаватель: \\
+\textit{старший преподаватель \hfill А.В. Андреев}
+
+\vfill
+
+\begin{center}
+    Новосибирск 2026 г.
+\end{center}
+
+\newpage
+\setcounter{page}{2}
+\OnehalfSpacing*
+
+\subsection*{Цель работы}
+
+\begin{itemize}
+    \item Настроить Ansible для автоматизированного сбора информации о клиентских машинах.
+    \item Собрать с клиентов данные: IP-адрес, версию ОС, имя хоста и свободное место на диске.
+    \item Сохранить собранные данные в структурированном виде на сервере.
+\end{itemize}
+
+\section{Проверка сетевой связности}
+
+Для выполнения работы используются виртуальные машины:
+\begin{itemize}
+    \item \textbf{Gateway} (192.168.14.1) — сервер Ansible;
+    \item \textbf{Desktop} (192.168.14.11) — клиент 1;
+    \item \textbf{WordPress} (192.168.14.6) — клиент 2.
+\end{itemize}
+
+На \hyperref[fig-ping]{рисунке \ref*{fig-ping}} представлена проверка связи сервера с клиентскими машинами.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{photo/photo1.png}
+    \caption{Проверка связи с desktop и wordpress (ping)}
+    \label{fig-ping}
+\end{figure}
+
+\section{Установка Ansible на сервер}
+
+На сервере Gateway выполняется установка Ansible. На \hyperref[fig-ansible-version]{рисунке \ref*{fig-ansible-version}} представлен вывод команды \texttt{ansible --version} после установки.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{photo/photo2.png}
+    \caption{Проверка версии Ansible}
+    \label{fig-ansible-version}
+\end{figure}
+
+\section{Подготовка клиентских машин}
+
+На клиентских машинах установлен и запущен SSH-сервер. На \hyperref[fig-ssh-status]{рисунке \ref*{fig-ssh-status}} показан статус службы SSH на WordPress,На \hyperref[fig-ssh-status1]{рисунке \ref*{fig-ssh-status1}} показан статус службы SSH на Desktop.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{photo/photo3.png}
+    \caption{Проверка статуса SSH на клиентах (WordPress)}
+    \label{fig-ssh-status}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{photo/photo4.png}
+    \caption{Проверка статуса SSH на клиентах (Desktop)}
+    \label{fig-ssh-status1}
+\end{figure}
+
+\section{Настройка SSH-доступа}
+
+На сервере Gateway сгенерирована ключевая пара для аутентификации. Используется алгоритм \texttt{ed25519}, так как он обеспечивает более высокую безопасность при меньшей длине ключа по сравнению с RSA, а также обладает устойчивостью к атакам на основе квантовых вычислений. На \hyperref[fig-ssh-keygen]{рисунке \ref*{fig-ssh-keygen}} показан процесс генерации ключа.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{photo/photo5.png}
+    \caption{Генерация SSH-ключа на сервере Gateway}
+    \label{fig-ssh-keygen}
+\end{figure}
+
+Далее ключ копируется на клиентские машины с помощью команды \texttt{ssh-copy-id}. На \hyperref[fig-ssh-copy]{рисунке \ref*{fig-ssh-copy}} показан процесс копирования ключа на оба клиента.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{photo/photo6.png}
+    \caption{Копирование SSH-ключа на клиентские машины}
+    \label{fig-ssh-copy}
+\end{figure}
+
+\section{Создание структуры Ansible}
+
+На сервере создаётся файл инвентори \texttt{/etc/ansible/hosts}, в котором перечислены клиенты. На \hyperref[fig-ansible-hosts]{рисунке \ref*{fig-ansible-hosts}} представлено содержимое этого файла.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{photo/photo7.png}
+    \caption{Содержимое файла инвентори /etc/ansible/hosts}
+    \label{fig-ansible-hosts}
+\end{figure}
+
+Также создаётся конфигурационный файл \texttt{/etc/ansible/ansible.cfg}, в котором указывается путь к инвентори и отключается проверка host-ключей для автоматизации. На \hyperref[fig-ansible-cfg]{рисунке \ref*{fig-ansible-cfg}} показано его содержимое.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{photo/photo8.png}
+    \caption{Содержимое файла /etc/ansible/ansible.cfg}
+    \label{fig-ansible-cfg}
+\end{figure}
+
+\section{Проверка работы Ansible}
+
+Корректность настройки проверяется командой \texttt{ansible clients -m ping}. На \hyperref[fig-ansible-ping]{рисунке \ref*{fig-ansible-ping}} показан результат — оба клиента отвечают успешно.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{photo/photo9.png}
+    \caption{Проверка доступности клиентов (ansible clients -m ping)}
+    \label{fig-ansible-ping}
+\end{figure}
+
+\section{Создание и выполнение Playbook}
+
+Создан playbook \texttt{/etc/ansible/playbooks/monitoring.yml}, который собирает информацию о клиентах и сохраняет её в файлы на сервере. На \hyperref[fig-playbook]{рисунке \ref*{fig-playbook}} представлено содержимое playbook.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{photo/photo10.png}
+    \caption{Содержимое playbook monitoring.yml}
+    \label{fig-playbook}
+\end{figure}
+
+Запуск playbook выполняется командой \texttt{ansible-playbook}. На \hyperref[fig-playbook-run]{рисунке \ref*{fig-playbook-run}} показан процесс выполнения.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{photo/photo11.png}
+    \caption{Запуск playbook monitoring.yml}
+    \label{fig-playbook-run}
+\end{figure}
+
+\section{Результаты сбора данных}
+
+После выполнения playbook в директории \texttt{/etc/ansible/monitoring} созданы файлы с информацией о каждом клиенте. На \hyperref[fig-results]{рисунке \ref*{fig-results}} представлено содержимое файлов \texttt{desktop\_info.txt} и \texttt{wordpress\_info.txt}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{photo/photo12.png}
+    \caption{Собранные данные о клиентах}
+    \label{fig-results}
+\end{figure}
+
+\section*{Заключение}
+\addcontentsline{toc}{section}{Заключение}
+
+В ходе выполнения работы были решены следующие задачи:
+\begin{enumerate}
+    \item Настроена сетевая связность между сервером Gateway и клиентами Desktop и WordPress.
+    \item Установлен и настроен Ansible на сервере, настроен SSH-доступ к клиентам.
+    \item Созданы файлы инвентори и конфигурации Ansible.
+    \item Написан playbook для автоматического сбора информации о клиентах (IP, имя хоста, версия ОС, свободное место на диске).
+    \item Playbook успешно выполнен, собранные данные сохранены в директории \texttt{/etc/ansible/monitoring/} на сервере.
+\end{enumerate}
+
+В результате автоматизирован процесс сбора диагностической информации о клиентских машинах, что может быть использовано для мониторинга и администрирования сети.
+
+\end{document}

@@ -1,0 +1,203 @@
+% !TEX program = xelatex
+\documentclass[a4paper,14pt,oneside,openany]{memoir}
+
+%%% Задаем поля, отступы и межстрочный интервал %%%
+
+\usepackage[left=30mm, right=15mm, top=20mm, bottom=20mm]{geometry}
+\pagestyle{plain}
+\parindent=1.25cm
+\usepackage{indentfirst}
+
+%%% Задаем языковые параметры и шрифт %%%
+
+\usepackage[english,russian]{babel}
+\babelfont[russian]{rm}{Times New Roman}
+\babelfont[russian]{tt}{Courier New}
+
+%%% Задаем стиль заголовков и подзаголовков в тексте %%%
+
+\setsecnumdepth{subsection}
+\renewcommand*{\chapterheadstart}{}
+\renewcommand*{\printchaptername}{}
+\renewcommand*{\chapnumfont}{\normalfont\bfseries}
+\renewcommand*{\afterchapternum}{\hspace{1em}}
+\renewcommand*{\printchaptertitle}{\normalfont\bfseries\centering\MakeUppercase}
+\setbeforesecskip{20pt}
+\setaftersecskip{20pt}
+\setsecheadstyle{\raggedright\normalfont\bfseries}
+\setbeforesubsecskip{20pt}
+\setaftersubsecskip{20pt}
+\setsubsecheadstyle{\raggedright\normalfont\bfseries}
+
+%%% Исправление нумерации секций %%%
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+%%% Сквозная нумерация рисунков и таблиц %%%
+
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+%%% Выравнивание и переносы %%%
+
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\clubpenalty=10000
+\widowpenalty=10000
+
+%%% Задаем параметры оформления рисунков и таблиц %%%
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{{photo/}}
+\captionsetup[figure]{font=small, width=\textwidth, name=Рисунок, justification=centering}
+\captiondelim{ --- }
+\usepackage[section]{placeins}
+
+%%% Задаем параметры ссылок и гиперссылок %%% 
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+%%% Настраиваем отображение списков %%%
+
+\usepackage{enumitem}
+\renewcommand*{\labelitemi}{\normalfont{--}}
+\setlist{noitemsep, leftmargin=*}
+
+\begin{document}
+
+% Титульный лист (без номера страницы)
+\thispagestyle{empty}
+
+\begin{center}
+    МИНИСТЕРСТВО ЦИФРОВОГО РАЗВИТИЯ, СВЯЗИ И МАССОВЫХ \\ КОММУНИКАЦИЙ \\ РОССИЙСКОЙ ФЕДЕРАЦИИ
+
+    \vspace{20pt}
+
+    Федеральное государственное бюджетное образовательное учреждение \\ высшего образования \\
+    "Сибирский государственный университет телекоммуникаций и \\ информатики"
+
+    \vspace{20pt}
+
+    Кафедра телекоммуникационных систем и вычислительных средств \\ (ТС и ВС)
+\end{center}
+
+\vfill
+
+\begin{center}
+    Лабораторная работа №12 \\
+    по дисциплине \\
+    \textit{"Web-технологии"}
+
+    \vspace{20pt}
+
+    по теме: \\
+    \uppercase{Основы HTML и CSS}
+\end{center}
+
+\vfill
+
+\noindent Студент: \\
+\textit{Группа ИКС-532 \hfill А.С. Лёшин}
+
+\vspace{20pt}
+
+\noindent Преподаватель: \\
+\textit{старший преподаватель \hfill А.В. Андреев}
+
+\vfill
+
+\begin{center}
+    Новосибирск 2026 г.
+\end{center}
+
+\newpage
+\setcounter{page}{2}
+\OnehalfSpacing*
+
+\subsection*{Цель работы}
+
+\begin{itemize}
+    \item Освоить базовые теги HTML для разметки текста, списков и таблиц
+    \item Изучить основные CSS-селекторы и свойства оформления текста
+    \item Научиться применять фоновые изображения и стилизацию списков
+    \item Выполнить 16 практических задач по HTML и CSS
+\end{itemize}
+
+\section{Блок 1.1. Теги для разметки текста и атрибуты}
+
+Выполнены задачи:
+\begin{enumerate}
+    \item Разметка текста с заголовком второго уровня и двумя абзацами, добавлена ссылка
+    \item Исправление разметки с заголовком "Дорога", цитатой и абзацами
+    \item Разметка текста с заголовками h3, фотографиями и альтернативным текстом
+\end{enumerate}
+
+\textbf{Ссылка:} \href{https://codepen.io/Dreamshelter/pen/XJjywJB}{https://codepen.io/Dreamshelter/pen/XJjywJB}
+
+\vspace{15pt}
+
+\section{Блок 1.2. Списки и таблицы}
+
+Выполнены задачи:
+\begin{enumerate}
+    \item Маркированный список из 5 самых известных людей мира
+    \item Нумерованный список ТОП-5 Forbes в порядке убывания состояния
+    \item Таблица заказа аниматоров с итоговой строкой (сумма 29 350 руб.)
+    \item Исправление таблицы звёзд эстрады (7 строк, 4 колонки)
+\end{enumerate}
+
+\textbf{Ссылка:} \href{https://codepen.io/Dreamshelter/pen/VYKqbeJ}{https://codepen.io/Dreamshelter/pen/VYKqbeJ}
+
+\vspace{15pt}
+
+\section{Блок 2.1. Селекторы и свойства (Калуша и Бутявка)}
+
+Выполнены задачи:
+\begin{enumerate}
+    \item Синий цвет для заголовка "Калуша с Калушатами"
+    \item Коричневый цвет для всех выделенных \texttt{strong} (Калушата)
+    \item Жёлтый цвет и полужирное начертание для \texttt{span} с Бутявкой внутри цитат
+    \item Курсив для \texttt{strong} внутри нумерованного списка
+\end{enumerate}
+
+\textbf{Ссылка:} \href{https://codepen.io/Dreamshelter/pen/bNwOWpB}{https://codepen.io/Dreamshelter/pen/bNwOWpB}
+
+\vspace{15pt}
+
+\section{Блок 2.2. Оформление текстовых блоков (Альберт Эйнштейн)}
+
+Выполнены задачи:
+\begin{enumerate}
+    \item Заголовок \texttt{.main-header}: 56px, цвет \#365f91, шрифт serif
+    \item Все абзацы — размер 20px
+    \item Подчёркивание для \texttt{strong} внутри абзаца \texttt{.lead}
+    \item Цвет списка \#365f91, маркеры: квадрат (1-й уровень), круг (2-й уровень)
+    \item Цитата: фоновое изображение, цвет \#494429, курсив, шрифт serif
+\end{enumerate}
+
+\textbf{Ссылка:} \href{https://codepen.io/Dreamshelter/pen/ogzJWrb}{https://codepen.io/Dreamshelter/pen/ogzJWrb}
+
+\section*{Заключение}
+\addcontentsline{toc}{section}{Заключение}
+
+В ходе выполнения лабораторной работы №12 были решены все задачи из четырёх блоков:
+
+\begin{enumerate}
+    \item \textbf{Блок 1.1 (Теги для разметки текста)} — 3 задачи
+    \item \textbf{Блок 1.2 (Списки и таблицы)} — 4 задачи
+    \item \textbf{Блок 2.1 (Селекторы и свойства)} — 4 задачи
+    \item \textbf{Блок 2.2 (Оформление текстовых блоков)} — 5 задач
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,3 @@
+[submodule "go/day5/hellogopher"]
+	path = go/day5/hellogopher
+	url = https://github.com/vincentbernat/hellogopher

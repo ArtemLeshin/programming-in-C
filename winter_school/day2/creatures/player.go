@@ -67,10 +67,7 @@ func rewindTime() (Position, bool) {
 	return lastPos, true
 }
 
-// Setup запускает игровой цикл для одного лабиринта
-// Возвращает true, если лабиринт пройден успешно, false если игрок вышел (Q)
 func Setup(maze [][]rune, startX, startY, endX, endY int) (bool, error) {
-	// Настройка терминала для чтения клавиш без Enter
 	sttyConfig := exec.Command("stty", "-f", "/dev/tty", "cbreak", "min", "1", "-echo")
 	sttyConfig.Run()
 	defer exec.Command("stty", "-f", "/dev/tty", "sane").Run()

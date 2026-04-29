@@ -1,0 +1,184 @@
+% !TEX program = xelatex
+\documentclass[a4paper,14pt,oneside,openany]{memoir}
+
+%%% Задаем поля, отступы и межстрочный интервал %%%
+
+\usepackage[left=30mm, right=15mm, top=20mm, bottom=20mm]{geometry}
+\pagestyle{plain}
+\parindent=1.25cm
+\usepackage{indentfirst}
+
+%%% Задаем языковые параметры и шрифт %%%
+
+\usepackage[english,russian]{babel}
+\babelfont[russian]{rm}{Times New Roman}
+\babelfont[russian]{tt}{Courier New}
+
+%%% Задаем стиль заголовков и подзаголовков в тексте %%%
+
+\setsecnumdepth{subsection}
+\renewcommand*{\chapterheadstart}{}
+\renewcommand*{\printchaptername}{}
+\renewcommand*{\chapnumfont}{\normalfont\bfseries}
+\renewcommand*{\afterchapternum}{\hspace{1em}}
+\renewcommand*{\printchaptertitle}{\normalfont\bfseries\centering\MakeUppercase}
+\setbeforesecskip{20pt}
+\setaftersecskip{20pt}
+\setsecheadstyle{\raggedright\normalfont\bfseries}
+\setbeforesubsecskip{20pt}
+\setaftersubsecskip{20pt}
+\setsubsecheadstyle{\raggedright\normalfont\bfseries}
+
+%%% Отключаем нумерацию секций %%%
+\setsecnumdepth{none}
+
+%%% Сквозная нумерация рисунков и таблиц %%%
+
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+%%% Выравнивание и переносы %%%
+
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\clubpenalty=10000
+\widowpenalty=10000
+
+%%% Задаем параметры оформления рисунков и таблиц %%%
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{{photo/}}
+\captionsetup[figure]{font=small, width=\textwidth, name=Рисунок, justification=centering}
+\captiondelim{ --- }
+\usepackage[section]{placeins}
+
+%%% Задаем параметры ссылок и гиперссылок %%% 
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+
+%%% Настраиваем отображение списков %%%
+
+\usepackage{enumitem}
+\renewcommand*{\labelitemi}{\normalfont{--}}
+\setlist{noitemsep, leftmargin=*}
+
+\begin{document}
+
+% Титульный лист (без номера страницы)
+\thispagestyle{empty}
+
+\begin{center}
+    МИНИСТЕРСТВО ЦИФРОВОГО РАЗВИТИЯ, СВЯЗИ И МАССОВЫХ \\ КОММУНИКАЦИЙ \\ РОССИЙСКОЙ ФЕДЕРАЦИИ
+
+    \vspace{20pt}
+
+    Федеральное государственное бюджетное образовательное учреждение \\ высшего образования \\
+    «Сибирский государственный университет телекоммуникаций и \\ информатики»
+
+    \vspace{20pt}
+
+    Кафедра телекоммуникационных систем и вычислительных средств \\ (ТСиВС)
+\end{center}
+
+\vfill
+
+\begin{center}
+    Лабораторная работа №13 \\
+    по дисциплине \\
+    \textit{«WEB-Технологии / Дизайн интерфейсов»}
+
+    \vspace{20pt}
+
+    по теме: \\
+    \uppercase{Погружение в разработку на JavaScript}
+\end{center}
+
+\vfill
+
+\noindent Студент: \\
+\textit{Группа № ИКС-532 \hfill Лёшин А.С.}
+
+\vspace{20pt}
+
+\noindent Преподаватель: \\
+\textit{старший преподаватель \hfill Андреев А.В.}
+
+\vfill
+
+\begin{center}
+    Новосибирск 2026 г.
+\end{center}
+
+\newpage
+\setcounter{page}{2}
+\OnehalfSpacing*
+
+\section{Блок 1 Введение}
+
+Целью лабораторной работы является изучение базовых концепций языка JavaScript, включая работу с переменными, массивами, циклами и методами строк. Также в работу входит освоение навыков взаимодействия с внешними API и деплоя веб-приложений на хостинг.
+
+\section{Блок 2 Описание работы}
+
+\section{Блок 2.1 Базовые понятия и бонусная система}
+
+В рамках первой задачи была реализована имитация бонусной системы интернет-магазина. Были созданы переменные для имени пользователя и баланса, а также произведен расчет остатка баллов через 7 дней с учетом ежедневного сгорания и периодических покупок.
+
+\section{Блок 2.2 Основы JavaScript (Массивы и циклы)}
+
+Для имитации мессенджера был инициализирован массив сообщений. С помощью цикла for реализован вывод переписки с чередованием отправителей («Друг»/«Вы»). Также добавлена функция поиска по ключевому слову с использованием метода \texttt{.includes()}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{1.png}
+    \caption{Реализация логики бонусной системы и чата}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{2.png}
+    \caption{Вывод программы}
+\end{figure}
+
+\section{Блок 3 Разработка сайта и работа с API}
+
+На данном этапе было реализовано динамическое получение данных о персонажах Marvel с внешнего API. Полученные данные были преобразованы в интерактивные карточки персонажей.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{3.png}
+    \caption{Отображение персонажей Marvel, полученных через API}
+\end{figure}
+
+\section{Блок 4 Доработка и публикация}
+
+Итоговый проект был загружен на хостинг Timeweb. Файлы проекта (index.html, start.js, index.js) были размещены в директории public\_html.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{4.png}
+    \caption{Вывод рабочего сайта, загруженного через Timeweb}
+\end{figure}
+
+\section{Выводы}
+
+В ходе лабораторной работы были освоены фундаментальные принципы JavaScript: работа с типами данных, управляющими конструкциями и массивами. Были получены практические навыки работы с асинхронными запросами (Fetch API) и размещения статических сайтов на облачном хостинге.
+
+\section{Ссылки на ресурсы}
+
+\begin{itemize}
+    \item \textbf{Исходный код (Replit):} \href{https://codepen.io/Dreamshelter/pen/ogzJWrb}{https://codepen.io/Dreamshelter/pen/ogzJWrb}
+    \item \textbf{Исходный код с Marvel API (Replit):} \href{https://lab-13--lesinrtm.replit.app}{https://lab-13--lesinrtm.replit.app}
+    \item \textbf{Рабочий сайт (Timeweb):} \href{https://ci977889.tw1.ru/}{https://ci977889.tw1.ru/}
+\end{itemize}
+
+\end{document}

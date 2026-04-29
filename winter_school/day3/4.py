@@ -152,7 +152,7 @@ while running:
             else:
                 wan_soun.play()
                 score += 1
-                if speed < 140:  # Увеличиваем максимальный FPS до 150
+                if speed < 110:  # Увеличиваем максимальный FPS до 150
                     speed += 3
     
     for fruit in fruits_to_remove:
