@@ -21,7 +21,7 @@ void* print(void* name){
         printf("%s:%d\n", (char*)name,i+1);
         sleep(1);
     }
-    pthread_cleanup_pop(1); 
+    pthread_cleanup_pop(0); 
     return NULL;
 }
 
@@ -38,7 +38,7 @@ int main() {
     pthread_create(&text, NULL, daughter_pt, NULL); 
     pthread_join(text, NULL);
     
-    for (int i = 1; i <= 5; i++) {
+    for (int i=1; i<=5; i++) {
         printf("Родительский: строка %d\n", i);
     }
     pthread_t text1,text2,text3,text4;
@@ -70,7 +70,7 @@ int main() {
         arr[i]=rand()%100;
         pthread_create(&pthread[i], NULL, sleep_sort, &arr[i]);    
     }
-    for (int i = 0; i < 50; i++) {
+    for (int i=0; i<50; i++) {
         pthread_join(pthread[i], NULL);
     }
 }

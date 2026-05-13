@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.11)  28 APR 2026 23:57
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.3.11)  30 APR 2026 10:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/artemlesin/lab8.c/Laba9/web-technology/lab13/lab13
-(/Users/artemlesin/lab8.c/Laba9/web-technology/lab13/lab13.tex
+**/Users/artemlesin/lab8.c/Laba9/web_technologies/lab13/lab13
+(/Users/artemlesin/lab8.c/Laba9/web_technologies/lab13/lab13.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
 (/usr/local/texlive/2026/texmf-dist/tex/latex/memoir/memoir.cls
@@ -803,23 +803,16 @@ File: photo/4.png Graphic file (type bmp)
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
  ***********
-
-
-Package rerunfilecheck Warning: File `lab13.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `lab13.out':
-(rerunfilecheck)             Before: 0C52AE3502E16B460C2E754FFEF83E9F;1989
-(rerunfilecheck)             After:  CDE75DA3E1C32E3DDF7CF17B2B23F2FB;1997.
+Package rerunfilecheck Info: File `lab13.out' has not changed.
+(rerunfilecheck)             Checksum: CDE75DA3E1C32E3DDF7CF17B2B23F2FB;1997.
  ) 
 Here is how much of TeX's memory you used:
  17857 strings out of 468168
- 338191 string characters out of 5432815
+ 338197 string characters out of 5432815
  832809 words of memory out of 5000000
  46379 multiletter control sequences out of 15000+600000
  628329 words of font info for 72 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 85i,11n,108p,558b,548s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 85i,11n,108p,560b,548s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on lab13.pdf (5 pages).

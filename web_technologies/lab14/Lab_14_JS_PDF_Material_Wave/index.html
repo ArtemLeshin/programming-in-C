@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(145deg, #ed021d, #1c05e8);
+            font-family: sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .resume-card {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            overflow: hidden;
+        }
+        .toolbar {
+            background: #28cfd8;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 16px;
+        }
+        .btn {
+            background: rgb(0, 255, 123);
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: grab;
+            font-family: inherit;
+        }
+
+        .btn:hover { background: #19ce31; transform: translateY(-2px); }
+        .resume-content { padding: 2rem; }
+        [contenteditable="true"] {
+            outline: none;
+            border-radius: 8px;
+        }
+        [contenteditable="true"]:focus {
+            background: #d1f5fe;
+            box-shadow: 0 0 0 2px hsl(203, 96%, 53%);
+        }
+        .header-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            padding-bottom: 18px;
+            border-bottom: 3px solid #eef2ff;
+        }
+        .name-title h1 { 
+            font-size: 40px;
+            font-weight: 800; 
+        }
+        .name-title p { 
+            color: #2b333f; 
+            margin-top: 10px; 
+        }
+        .contacts { 
+            text-align: right; 
+            color: #334155; 
+            line-height: 1.5; 
+        }
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1.2fr 1.6fr;
+            gap: 2rem;
+        }
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-left: 5px solid #fa3b15;
+            padding-left: 0.8rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .skill-item, .lang-item, .job, .edu-item { margin-bottom: 0.8rem; }
+        .job-title, .edu-title { font-weight: 700; }
+        .edit-hint {
+            font-size: 0.7rem;
+            text-align: center;
+            color: #94a3b8;
+            margin-top: 1rem;
+        }
+        @media (max-width: 720px) {
+            .two-columns { grid-template-columns: 1fr; }
+            .header-section { flex-direction: column; align-items: flex-start; }
+            .contacts { text-align: left; }
+            .name-title h1 { font-size: 1.8rem; }
+        }
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(36, 88, 147, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 1s linear;
+        }
+        @keyframes ripple-animation {
+            to { transform: scale(0.1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="resume-card">
+    <div class="toolbar">
+        <button class="btn" id="resetBtn">↻ Сбросить</button>
+        <button class="btn btn-primary" id="downloadPDFBtn">📁 Скачать PDF</button>
+    </div>
+    <div class="resume-content" id="resumeContent">
+        <div class="header-section">
+            <div class="name-title">
+                <h1 contenteditable="true" id="fullName">Лёшин Артём</h1>
+                <p contenteditable="true" id="jobTagline">Студент СибГУТИ</p>
+            </div>
+            <div class="contacts">
+                <div contenteditable="true" id="contactEmail">📧 lesinrtm@gmail.com</div>
+                <div contenteditable="true" id="contactPhone">📞 +7 904 577 96 73</div>
+                <div contenteditable="true" id="contactLocation">📍 Новосибирск</div>
+                <div contenteditable="true" id="contactGit">💻 https://github.com/ArtemLeshin/programming-in-C</div>
+            </div>
+        </div>
+        <div class="two-columns">
+            <div class="left-panel">
+                <div class="section-title" contenteditable="true">Технические навыки</div>
+                <div id="skillsArea">
+                    <div class="skill-item" contenteditable="true">Языки программирования: C/C++, Go, Python, JavaScript, HTML5/CSS3.</div>
+                    <div class="skill-item" contenteditable="true">Инструменты и ОС: Visual Studio Code, Git, Bash, macOS (Zsh), Linux (Terminal), Windows (CMD)</div>
+                    <div class="skill-item" contenteditable="true">Основы сетей: стек TCP/IP, HTTP/HTTPS, Cisco Packet Tracer, Wireshark, виртуализация (VirtualBox).</div>
+                    <div class="skill-item" contenteditable="true">Алгоритмы: Сортировки (Quick, Merge, Shell), поиск, структуры данных и оценка сложности (Big O).</div>
+                    <div class="skill-item" contenteditable="true"></div>
+                </div>
+                <div class="section-title" contenteditable="true" style="margin-top: 1rem;">Языки</div>
+                <div id="langsArea">
+                    <div class="lang-item"><span contenteditable="true">Русский</span> — <span contenteditable="true">Родной</span></div>
+                    <div class="lang-item"><span contenteditable="true">Английский</span> — <span contenteditable="true">C1 (Advanced)</span></div>
+                    <div class="lang-item"><span contenteditable="true">Немецкий</span> — <span contenteditable="true">A2 (базовый)</span></div>
+                </div>
+            </div>
+            <div class="right-panel">
+                <div class="section-title" contenteditable="true">Опыт работы</div>
+                <div id="expArea">
+                    <div class="job">
+                        <div contenteditable="true">Опыт: Разработка учебных проектов на C++/Go, создание веб-интерфейсов и моделирование сетей в Cisco Packet Tracer.</div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                    </div>
+                </div>
+                <div class="section-title" contenteditable="true" style="margin-top: 1rem;">Образование</div>
+                <div id="eduArea">
+                    <div class="edu-item">
+                        <div contenteditable="true">ВУЗ: Сибирский государственный университет телекоммуникаций и информатики (СибГУТИ)</div>
+                        <div contenteditable="true">Факультет/Направление: ИВТ, «Программное обеспечение систем мобильной связи».</div>
+                        <div contenteditable="true">Годы обучения: 2025 – 2029</div>
+                    </div>
+                </div>
+                <div class="section-title" contenteditable="true" style="margin-top: 1rem;">О себе:</div>
+                <div id="eduArea">
+                    <div class="edu-item">
+                        <div contenteditable="true">Всё началось с простого "Hello World", а закончилось попыткой отдебажить код в три часа ночи, когда монитор — единственный источник света в комнате, а кружка кофе — твой единственный верный тимлид</div>
+                        <div contenteditable="true"></div>
+                        <div contenteditable="true"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="edit-hint">✨ <strong>Кликните на любой текст</strong> — редактируйте. Изменения сохранятся автоматически.</div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const save = () => {
+        const data = {};
+        document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+            const key = el.id || el.getAttribute('data-key') || (() => {
+                let k = `gen_${Math.random()}`;
+                el.setAttribute('data-key', k);
+                return k;
+            })();
+            data[key] = el.innerHTML;
+        });
+        localStorage.setItem('resumeData', JSON.stringify(data));
+    };
+
+    const load = () => {
+        const raw = localStorage.getItem('resumeData');
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+            const key = el.id || el.getAttribute('data-key');
+            if (key && data[key] !== undefined && el.innerHTML !== data[key]) {
+                el.innerHTML = data[key];
+            }
+        });
+    };
+
+    const ripple = (e) => {
+        const target = e.currentTarget;
+        const rect = target.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${e.clientX - rect.left - size/2}px`;
+        ripple.style.top = `${e.clientY - rect.top - size/2}px`;
+        target.style.position = 'relative';
+        target.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 500);
+    };
+
+    const reset = () => {
+        if (confirm('Сбросить резюме к исходному виду?')) {
+            localStorage.removeItem('resumeData');
+            location.reload();
+        }
+    };
+
+    const pdf = () => {
+        html2pdf().set({
+            margin: [0.5, 0.5, 0.5, 0.5],
+            filename: 'resume.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        }).from(document.getElementById('resumeContent')).save();
+    };
+
+    // инициализация
+    load();
+    document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+        el.addEventListener('blur', save);
+        el.addEventListener('input', save);
+    });
+    document.querySelectorAll('.resume-content, .left-panel > div, .right-panel > div, .skill-item, .lang-item, .job, .edu-item, .name-title, .contacts, [contenteditable]').forEach(el => {
+        el.addEventListener('click', ripple);
+        if (getComputedStyle(el).position !== 'absolute') el.style.position = 'relative';
+    });
+    document.getElementById('resetBtn').addEventListener('click', reset);
+    document.getElementById('downloadPDFBtn').addEventListener('click', pdf);
+    window.addEventListener('beforeunload', save);
+})();
+</script>
+</body>
+</html>

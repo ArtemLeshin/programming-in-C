@@ -13,8 +13,8 @@ typedef struct {
 
 void* multiply_part(void* arg) {
     Thread* data = arg;
-    for (int i = data->start_row; i < data->end_row; i++) {
-        for (int j = 0; j < data->n; j++) {
+    for (int i= data->start_row; i < data->end_row; i++) {
+        for (int j = 0; j <data->n; j++) {
             data->C[i][j] = 0;
             for (int k = 0; k < data->n; k++) {
                 data->C[i][j] += data->A[i][k] * data->B[k][j];
@@ -26,8 +26,8 @@ void* multiply_part(void* arg) {
 
 void printMatrix(int n, int **matrix, char *name) {
     printf("Matrix: %s\n", name);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
+    for (int i=0; i<n; i++) {
+        for (int j=0; j<n; j++) {
             printf("%d ", matrix[i][j]);
         }
         printf("\n");
@@ -62,7 +62,6 @@ int main(int argc, char *argv[]) {
         thread_data[i].C = C;
         thread_data[i].start_row = i * rows;
         thread_data[i].end_row = (i + 1) * rows; 
-        
         pthread_create(&threads[i], NULL, multiply_part, &thread_data[i]);
     }
 

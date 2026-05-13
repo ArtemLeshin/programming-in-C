@@ -39,6 +39,7 @@ void printMatrix(int n, int **matrix,char *name){
         printf("\n");
     }
 }
+
 int main() {
     pthread_t text;
     pthread_create(&text, NULL, daughter_pt, NULL);
@@ -58,13 +59,13 @@ int main() {
     int n;
     printf("Input: N\n");
     scanf("%d",&n);
-    int **A = malloc(n * sizeof(int *));
-    int **B = malloc(n * sizeof(int *));
-    int **C = malloc(n * sizeof(int *));
+    int **A = malloc(n*sizeof(int *));
+    int **B = malloc(n*sizeof(int *));
+    int **C = malloc(n*sizeof(int *));
     for (int i=0;i<n;i++){
-        A[i]=malloc(n * sizeof(int));
-        B[i]=malloc(n * sizeof(int));
-        C[i]=malloc(n * sizeof(int));
+        A[i]=malloc(n*sizeof(int));
+        B[i]=malloc(n*sizeof(int));
+        C[i]=malloc(n*sizeof(int));
     }
     for (int i=0;i<n;i++){
         for (int j=0;j<n;j++){

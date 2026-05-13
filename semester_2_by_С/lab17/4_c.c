@@ -14,10 +14,10 @@ typedef struct {
 
 void* multiply_part(void* arg) {
     Thread* data = arg;
-    for (int i = data->start_row; i < data->end_row; i++) {
-        for (int j = 0; j < data->n; j++) {
-            data->C[i][j] = 0;
-            for (int k = 0; k < data->n; k++) {
+    for (int i=data->start_row; i<data->end_row; i++) {
+        for (int j=0; j<data->n; j++) {
+            data->C[i][j]=0;
+            for (int k=0; k<data->n; k++) {
                 data->C[i][j] += data->A[i][k] * data->B[k][j];
             }
         }
@@ -42,18 +42,19 @@ int main(int argc, char *argv[]) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start); 
 
-    int **A = malloc(n * sizeof(int *));
-    int **B = malloc(n * sizeof(int *));
-    int **C = malloc(n * sizeof(int *));
+    int **A = malloc(n*sizeof(int *));
+    int **B = malloc(n*sizeof(int *));
+    int **C = malloc(n*sizeof(int *));
     for (int i = 0; i < n; i++) {
-        A[i] = malloc(n * sizeof(int));
-        B[i] = malloc(n * sizeof(int));
-        C[i] = malloc(n * sizeof(int));
+        A[i] = malloc(n*sizeof(int));
+        B[i] = malloc(n*sizeof(int));
+        C[i] = malloc(n*sizeof(int));
         for (int j = 0; j < n; j++) {
             A[i][j] = 1; 
             B[i][j] = 1;
         }
     }
+    
 
     pthread_t threads[count_thread];
     Thread thread_data[count_thread];
@@ -66,7 +67,6 @@ int main(int argc, char *argv[]) {
         thread_data[i].C = C;
         thread_data[i].start_row = i * rows;
         thread_data[i].end_row = (i + 1) * rows; 
-        
         pthread_create(&threads[i], NULL, multiply_part, &thread_data[i]);
     }
 

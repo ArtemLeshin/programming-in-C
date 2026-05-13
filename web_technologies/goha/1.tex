@@ -1,0 +1,680 @@
+исправь ошибки
+
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{longtable}
+\usepackage{float}
+
+% Настройка шрифтов: Times New Roman для текста и Courier New для кода
+\setmainfont{Times New Roman}
+\setmonofont{Courier New}
+
+% Настройка полей
+\usepackage[a4paper, left=2.5cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
+
+% Настройка межстрочного интервала
+\linespread{1.5}
+
+% Отступ абзаца
+\setlength{\parindent}{1.25cm}
+
+% Настройка подписей рисунков
+\usepackage{caption}
+\addto\captionsrussian{%
+  \renewcommand{\figurename}{Рисунок}%
+}
+
+\DeclareCaptionLabelFormat{dash}{#1 #2 -- }
+\captionsetup[figure]{
+  labelformat=dash,
+  labelsep=none,
+  name={Рисунок}
+}
+
+% --- Настройка листингов кода ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=single,
+    extendedchars=true,
+    literate={а}{{\selectfont\char1072}}1 {б}{{\selectfont\char1073}}1 {в}{{\selectfont\char1074}}1 {г}{{\selectfont\char1075}}1 {д}{{\selectfont\char1076}}1 {е}{{\selectfont\char1077}}1 {ё}{{\selectfont\char1079}}1 {ж}{{\selectfont\char1081}}1 {з}{{\selectfont\char1082}}1 {и}{{\selectfont\char1083}}1 {й}{{\selectfont\char1084}}1 {к}{{\selectfont\char1085}}1 {л}{{\selectfont\char1086}}1 {м}{{\selectfont\char1087}}1 {н}{{\selectfont\char1088}}1 {о}{{\selectfont\char1089}}1 {п}{{\selectfont\char1090}}1 {р}{{\selectfont\char1091}}1 {с}{{\selectfont\char1092}}1 {т}{{\selectfont\char1093}}1 {у}{{\selectfont\char1094}}1 {ф}{{\selectfont\char1095}}1 {х}{{\selectfont\char1096}}1 {ц}{{\selectfont\char1097}}1 {ч}{{\selectfont\char1098}}1 {ш}{{\selectfont\char1099}}1 {щ}{{\selectfont\char1100}}1 {ъ}{{\selectfont\char1101}}1 {ы}{{\selectfont\char1102}}1 {ь}{{\selectfont\char1103}}1 {э}{{\selectfont\char1104}}1 {ю}{{\selectfont\char1105}}1 {я}{{\selectfont\char1106}}1 {А}{{\selectfont\char1040}}1 {Б}{{\selectfont\char1041}}1 {В}{{\selectfont\char1042}}1 {Г}{{\selectfont\char1043}}1 {Д}{{\selectfont\char1044}}1 {Е}{{\selectfont\char1045}}1 {Ё}{{\selectfont\char1046}}1 {Ж}{{\selectfont\char1047}}1 {З}{{\selectfont\char1048}}1 {И}{{\selectfont\char1049}}1 {Й}{{\selectfont\char1050}}1 {К}{{\selectfont\char1051}}1 {Л}{{\selectfont\char1052}}1 {М}{{\selectfont\char1053}}1 {Н}{{\selectfont\char1054}}1 {О}{{\selectfont\char1055}}1 {П}{{\selectfont\char1056}}1 {Р}{{\selectfont\char1057}}1 {С}{{\selectfont\char1058}}1 {Т}{{\selectfont\char1059}}1 {У}{{\selectfont\char1060}}1 {Ф}{{\selectfont\char1061}}1 {Х}{{\selectfont\char1062}}1 {Ц}{{\selectfont\char1063}}1 {Ч}{{\selectfont\char1064}}1 {Ш}{{\selectfont\char1065}}1 {Щ}{{\selectfont\char1066}}1 {Ъ}{{\selectfont\char1067}}1 {Ы}{{\selectfont\char1068}}1 {Ь}{{\selectfont\char1069}}1 {Э}{{\selectfont\char1070}}1 {Ю}{{\selectfont\char1071}}1 {Я}{{\selectfont\char1072}}1
+}
+
+\begin{document}
+
+% --- Титульный лист ---
+\thispagestyle{empty}
+\begin{center}
+    МИНИСТЕРСТВО ЦИФРОВОГО РАЗВИТИЯ, СВЯЗИ И МАССОВЫХ КОММУНИКАЦИЙ \\
+    РОССИЙСКОЙ ФЕДЕРАЦИИ
+    \vspace{20pt}
+
+    Федеральное государственное бюджетное образовательное учреждение \\
+    высшего образования \\
+    «Сибирский государственный университет телекоммуникаций и информатики»
+    \vspace{20pt}
+
+    Кафедра телекоммуникационных систем и вычислительных средств \\
+    (ТС и ВС)
+\end{center}
+
+\vspace{3cm}
+
+\begin{center}
+    \textbf{Курсовой проект} \\[10pt]
+    по дисциплине \\
+    \textbf{«WEB-Технологии / Дизайн интерфейсов»} \\[10pt]
+    по теме: \\
+    \textbf{«Разработка видеоплатформы для потокового видео»}
+\end{center}
+
+\vspace{3cm}
+
+\begin{flushleft}
+    \textbf{Студент:} \\
+    \textit{Группа № ИКС-532 \hfill Колесов Г.А.}
+    \vspace{20pt}
+    
+    \textbf{Преподаватель:} \\
+    \textit{Должность: старший преподаватель \hfill Андреев А.В.}
+\end{flushleft}
+
+\vfill
+\begin{center}
+    \textbf{Новосибирск 2026 г.}
+\end{center}
+
+\newpage
+
+\section{Введение}
+
+Целью курсового проекта является разработка функциональной веб-платформы для потокового видео, где пользователи могут просматривать, загружать и управлять видеоконтентом. Проект демонстрирует навыки разработки веб-приложений с использованием современного стека технологий и соблюдением принципов UI/UX-дизайна.
+
+\subsection{Задачи проекта}
+
+\begin{itemize}
+    \item Разработка бэкенда на Django с REST API
+    \item Реализация системы регистрации и авторизации с JWT-токенами
+    \item Создание функционала загрузки и потокового воспроизведения видео
+    \item Разработка фронтенда на React с адаптивным дизайном
+    \item Интеграция дизайна из Figma
+    \item Создание базы данных для хранения пользователей, видео и метаданных
+\end{itemize}
+
+\subsection{Используемые технологии}
+
+\begin{longtable}{|p{4cm}|p{4cm}|p{6cm}|}
+\hline
+\textbf{Компонент} & \textbf{Технология} & \textbf{Назначение} \\
+\hline
+Бэкенд & Django 5.0 & Основной фреймворк \\
+\hline
+Бэкенд & Django REST Framework & Создание REST API \\
+\hline
+Бэкенд & Simple JWT & JWT аутентификация \\
+\hline
+Бэкенд & SQLite/PostgreSQL & База данных \\
+\hline
+Бэкенд & Pillow & Обработка изображений \\
+\hline
+Фронтенд & React 18 & UI библиотека \\
+\hline
+Фронтенд & Tailwind CSS & Стилизация \\
+\hline
+Фронтенд & React Router DOM & Маршрутизация \\
+\hline
+Фронтенд & Axios & HTTP запросы \\
+\hline
+Дизайн & Figma & Прототипирование \\
+\hline
+\end{longtable}
+
+\newpage
+
+\section{Архитектура проекта}
+
+Проект построен по архитектуре клиент-сервер с разделением на бэкенд и фронтенд. Бэкенд реализован на Django с использованием Django REST Framework для создания REST API. Фронтенд разработан на React и взаимодействует с API посредством HTTP-запросов.
+
+\subsection{Структура проекта}
+
+\begin{lstlisting}[language=bash, caption=Структура проекта]
+video-platform/
+├── backend/                 # Django бэкенд
+│   ├── backend/            # Настройки проекта
+│   ├── users/              # Приложение пользователей
+│   ├── videos/             # Приложение видео
+│   ├── media/              # Загруженные файлы
+│   └── db.sqlite3          # База данных
+├── frontend/               # React фронтенд
+│   ├── public/             # Статические файлы
+│   ├── src/
+│   │   ├── components/     # React компоненты
+│   │   ├── contexts/       # Context API
+│   │   ├── pages/          # Страницы
+│   │   └── App.js          # Главный компонент
+└── README.md
+\end{lstlisting}
+
+\subsection{Модель базы данных}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{image.png}
+    \caption{базы данных}
+        \label{fig:database}
+\end{figure}
+
+Основные модели:
+\begin{itemize}
+    \item \textbf{User}: расширенная модель пользователя с поддержкой аватара, баннера, биографии, подписчиков
+    \item \textbf{Video}: модель видео с полями title, description, video\_file, thumbnail, views, likes
+    \item \textbf{Comment}: модель комментариев к видео
+\end{itemize}
+
+\newpage
+
+\section{Основные подходы в разработке}
+
+\subsection{Принципы ООП и SOLID}
+
+При разработке бэкенда использовались принципы объектно-ориентированного программирования. Модели Django наследуются от встроенных классов, что позволяет переиспользовать стандартную функциональность.
+
+\begin{lstlisting}[language=Python, caption=Модель пользователя]
+class User(AbstractUser):
+    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
+    banner = models.ImageField(upload_to='banners/', null=True, blank=True)
+    bio = models.TextField(max_length=500, blank=True, default='')
+    subscribers = models.ManyToManyField('self', symmetrical=False, blank=True)
+    
+    @property
+    def subscriber_count(self):
+        return self.subscribers.count()
+\end{lstlisting}
+
+\subsection{DRY (Don't Repeat Yourself)}
+
+В проекте применялся принцип DRY — повторно используемые компоненты вынесены в отдельные модули: сериализаторы, вьюсеты, React-компоненты.
+
+\begin{lstlisting}[language=Python, caption=Переиспользуемый сериализатор]
+class VideoSerializer(serializers.ModelSerializer):
+    author = UserSerializer(read_only=True)
+    like_count = serializers.IntegerField(read_only=True)
+    
+    class Meta:
+        model = Video
+        fields = '__all__'
+\end{lstlisting}
+
+\subsection{REST API}
+
+API построено по принципам REST. Используются стандартные HTTP-методы: GET для получения данных, POST для создания, PATCH для обновления, DELETE для удаления.
+
+\begin{longtable}{|p{3cm}|p{4cm}|p{7cm}|}
+\hline
+\textbf{Метод} & \textbf{Эндпоинт} & \textbf{Описание} \\
+\hline
+POST & /api/users/register/ & Регистрация пользователя \\
+\hline
+POST & /api/users/login/ & Вход (JWT токен) \\
+\hline
+GET & /api/videos/ & Список видео \\
+\hline
+GET & /api/videos/recommended/ & Рекомендации \\
+\hline
+POST & /api/videos/ & Загрузка видео \\
+\hline
+POST & /api/videos/\{id\}/like/ & Лайк/дизлайк \\
+\hline
+GET & /api/videos/\{id\}/comments/ & Комментарии \\
+\hline
+DELETE & /api/videos/\{id\}/ & Удаление видео \\
+\hline
+\end{longtable}
+
+\subsection{JWT аутентификация}
+
+Для аутентификации используется JWT (JSON Web Token). После успешного входа сервер возвращает access и refresh токены.
+
+\begin{lstlisting}[language=JavaScript, caption=Сохранение токена на клиенте]
+const login = async (username, password) => {
+    const response = await axios.post('/api/users/login/', { username, password });
+    localStorage.setItem('access_token', response.data.access);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
+};
+\end{lstlisting}
+
+\subsection{React компоненты}
+
+Фронтенд построен на функциональных компонентах с использованием хуков (useState, useEffect, useContext).
+
+\begin{lstlisting}[language=JavaScript, caption=Пример функционального компонента]
+export default function VideoPlayer() {
+    const { id } = useParams();
+    const [video, setVideo] = useState(null);
+    const [isLiked, setIsLiked] = useState(false);
+    
+    useEffect(() => {
+        fetchVideo();
+    }, [id]);
+    
+    const handleLike = async () => {
+        await axios.post(`/api/videos/${id}/like/`);
+        setIsLiked(!isLiked);
+    };
+    
+    return ( ... );
+}
+\end{lstlisting}
+
+\newpage
+
+\section{Трудности и их решение}
+
+\subsection{Проблема 1: CORS при запросах между фронтендом и бэкендом}
+
+\textbf{Описание:} При попытке отправить запрос с фронтенда (порт 3000) на бэкенд (порт 8000) браузер блокировал запросы из-за политики CORS.
+
+\textbf{Решение:} Установлен пакет django-cors-headers и добавлены соответствующие настройки в settings.py:
+
+\begin{lstlisting}[language=Python, caption=Настройка CORS]
+INSTALLED_APPS = ['corsheaders', ...]
+MIDDLEWARE = ['corsheaders.middleware.CorsMiddleware', ...]
+CORS_ALLOW_ALL_ORIGINS = True
+\end{lstlisting}
+
+\subsection{Проблема 2: Загрузка файлов (видео и изображений)}
+
+\textbf{Описание:} При загрузке видео и изображений возникали ошибки из-за неправильной обработки multipart/form-data.
+
+\textbf{Решение:} Настроена корректная обработка файлов в сериализаторах и вьюхах. Добавлена валидация типов файлов и размера.
+
+\begin{lstlisting}[language=Python, caption=Обработка загрузки аватара]
+@action(detail=True, methods=['post'], url_path='upload-avatar')
+def upload_avatar(self, request, pk=None):
+    user = self.get_object()
+    if 'avatar' not in request.FILES:
+        return Response({'error': 'Файл не найден'}, status=400)
+    
+    user.avatar = request.FILES['avatar']
+    user.save()
+    return Response(UserSerializer(user).data)
+\end{lstlisting}
+
+\subsection{Проблема 3: React Router не обновляет компонент при изменении URL}
+
+\textbf{Описание:} При переходе по ссылке с параметром search компонент Home.js не перерендеривался.
+
+\textbf{Решение:} Использован useEffect с зависимостью от window.location.search.
+
+\begin{lstlisting}[language=JavaScript, caption=Отслеживание изменения URL]
+useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('search');
+    if (query) {
+        performSearch(query);
+    }
+}, [window.location.search]);
+\end{lstlisting}
+
+\subsection{Проблема 4: Потеря контекста при использовании this в компонентах}
+
+\textbf{Описание:} В классовых компонентах возникала потеря привязки this при передаче методов в дочерние компоненты.
+
+\textbf{Решение:} Переход на функциональные компоненты с хуками, что также упростило код.
+
+\begin{lstlisting}[language=JavaScript, caption=Использование хуков вместо классовых компонентов]
+// Вместо class Component extends React.Component
+export default function MyComponent() {
+    const [state, setState] = useState(initialValue);
+    // ...
+}
+\end{lstlisting}
+
+\subsection{Проблема 5: Ошибки миграций при изменении модели User}
+
+\textbf{Описание:} При добавлении новых полей в модель User возникали конфликты с существующей таблицей.
+
+\textbf{Решение:} Применены следующие команды:
+
+\begin{lstlisting}[language=bash, caption=Применение миграций]
+python manage.py makemigrations users
+python manage.py migrate
+# При конфликтах:
+python manage.py migrate --fake users zero
+python manage.py makemigrations users
+python manage.py migrate
+\end{lstlisting}
+
+\subsection{Проблема 6: Кнопка подписки не обновляет состояние}
+
+\textbf{Описание:} После нажатия на кнопку подписки интерфейс не отображал изменение статуса.
+
+\textbf{Решение:} Добавлено локальное обновление состояния после успешного ответа от сервера.
+
+\begin{lstlisting}[language=JavaScript, caption=Обновление состояния подписки]
+const handleSubscribe = async () => {
+    const response = await axios.post(`/api/users/${userId}/subscribe/`);
+    setIsSubscribed(response.data.status === 'subscribed');
+    setSubCount(response.data.count);
+};
+\end{lstlisting}
+
+\subsection{Проблема 7: Поиск не работал без авторизации}
+
+\textbf{Описание}: Поиск видео был недоступен для неавторизованных пользователей.
+
+\textbf{Решение}: В бэкенде изменен permission\_classes для VideoViewSet:
+
+\begin{lstlisting}[language=Python, caption=Разрешение поиска без авторизации]
+class VideoViewSet(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)  # Разрешено всем
+\end{lstlisting}
+
+\subsection{Проблема 8: Баннер не отображался после загрузки}
+
+\textbf{Описание}: При загрузке баннера через интерфейс он не отображался на странице профиля.
+
+\textbf{Решение}: Проблема была связана с расширениями браузера (AdBlock). Добавлен fallback-градиент и правильная обработка URL изображений.
+
+\begin{lstlisting}[language=JavaScript, caption=Формирование URL для изображений]
+const getImageUrl = (path) => {
+    if (!path) return null;
+    if (path.startsWith('http')) return path;
+    return `http://localhost:8000${path}`;
+};
+\end{lstlisting}
+
+\newpage
+
+\section{Результаты работы}
+
+\subsection{Функционал платформы}
+
+В результате разработана полноценная видеоплатформа со следующим функционалом:
+
+\begin{itemize}
+    \item Регистрация и авторизация пользователей
+    \item Просмотр видео с кастомным плеером
+    \item Загрузка видео с превью
+    \item Система лайков и комментариев
+    \item Подписка на каналы
+    \item Поиск по видео
+    \item Редактирование профиля (аватар, баннер, биография)
+\end{itemize}
+
+\subsection{Скриншоты интерфейса}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{image1.png}
+        \caption{Главная страница}
+    \label{fig:home}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{image3.png}
+        \caption{Страница просмотра видео}
+    \label{fig:video}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{image4.png}
+        \caption{Профиль пользователя}
+    \label{fig:profile}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{image5.png}
+    \caption{Страница загрузки видео}
+    \label{fig:upload}
+\end{figure}
+
+\subsection{API тестирование}
+
+\begin{lstlisting}[language=bash, caption=Тестирование API через curl]
+# Регистрация пользователя
+curl -X POST http://localhost:8000/api/users/register/ \
+  -H "Content-Type: application/json" \
+  -d '{"username":"user","password":"pass123","password2":"pass123"}'
+
+# Вход и получение токена
+curl -X POST http://localhost:8000/api/users/login/ \
+  -H "Content-Type: application/json" \
+  -d '{"username":"user","password":"pass123"}'
+
+# Получение списка видео
+curl http://localhost:8000/api/videos/
+
+# Поиск видео
+curl "http://localhost:8000/api/videos/?search=привет"
+\end{lstlisting}
+
+\newpage
+
+\section{Выводы}
+
+В ходе выполнения курсового проекта была разработана полноценная видеоплатформа, отвечающая всем поставленным требованиям.
+
+\subsection{Достигнутые результаты}
+
+\begin{itemize}
+    \item Полностью рабочий бэкенд на Django с REST API
+    \item Современный фронтенд на React с адаптивным дизайном
+    \item Система JWT аутентификации
+    \item Полноценное управление видео (загрузка, просмотр, удаление)
+    \item Система лайков и комментариев
+    \item Профили пользователей с кастомизацией
+    \item Рабочий поиск без авторизации
+\end{itemize}
+
+\subsection{Навыки, полученные в ходе работы}
+
+\begin{itemize}
+    \item Разработка REST API на Django REST Framework
+    \item Создание SPA на React с маршрутизацией
+    \item Работа с JWT-токенами
+    \item Управление состоянием через Context API
+    \item Интеграция дизайна из Figma
+    \item Отладка и решение проблем CORS
+    \item Работа с медиафайлами
+\end{itemize}
+
+\subsection{Перспективы развития}
+
+\begin{itemize}
+    \item Добавление рекомендательной системы на основе ML
+    \item Реализация чатов и стримов
+    \item Добавление плейлистов
+    \item Интеграция с платежными системами для монетизации
+    \item Разработка мобильного приложения
+\end{itemize}
+
+\newpage
+
+\section*{Список использованных источников}
+
+\begin{itemize}
+    \item Django Documentation. — Режим доступа: \url{https://docs.djangoproject.com/}
+    \item Django REST Framework Documentation. — Режим доступа: \url{https://www.django-rest-framework.org/}
+    \item React Documentation. — Режим доступа: \url{https://react.dev/}
+    \item Tailwind CSS Documentation. — Режим доступа: \url{https://tailwindcss.com/}
+    \item Figma Design Tool. — Режим доступа: \url{https://www.figma.com/}
+    \item JWT Introduction. — Режим доступа: \url{https://jwt.io/introduction}
+\end{itemize}
+
+\newpage
+
+\section*{Приложение A. Ссылки на репозиторий}
+
+\begin{itemize}
+    \item \href{https://github.com/yourusername/video-platform}{GitHub репозиторий проекта}
+    \item \href{https://www.figma.com/design/...}{Figma макет дизайна}
+\end{itemize}
+
+\newpage
+
+\section*{Приложение Б. Листинги кода}
+
+\subsection*{Б.1 Главный файл настроек Django (settings.py)}
+
+\begin{lstlisting}[language=Python, caption=backend/settings.py]
+import os
+from pathlib import Path
+from datetime import timedelta
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = 'django-insecure-key'
+DEBUG = True
+ALLOWED_HOSTS = ['*']
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    'corsheaders',
+    'users',
+    'videos',
+]
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+ROOT_URLCONF = 'backend.urls'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+}
+
+CORS_ALLOW_ALL_ORIGINS = True
+AUTH_USER_MODEL = 'users.User'
+\end{lstlisting}
+
+\subsection*{Б.2 Модель видео (videos/models.py)}
+
+\begin{lstlisting}[language=Python, caption=videos/models.py]
+from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+class Video(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    video_file = models.FileField(upload_to='videos/%Y/%m/')
+    thumbnail = models.ImageField(upload_to='thumbnails/%Y/%m/', null=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='videos')
+    views = models.IntegerField(default=0)
+    likes = models.ManyToManyField(User, related_name='liked_videos', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_published = models.BooleanField(default=True)
+    
+    @property
+    def like_count(self):
+        return self.likes.count()
+    
+    @property
+    def comment_count(self):
+        return self.comments.count()
+
+class Comment(models.Model):
+    video = models.ForeignKey(Video, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField(max_length=500)
+    created_at = models.DateTimeField(auto_now_add=True)
+\end{lstlisting}
+
+\subsection*{Б.3 Главный компонент React (App.js)}
+
+\begin{lstlisting}[language=JavaScript, caption=frontend/src/App.js]
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import VideoPlayer from './pages/VideoPlayer';
+import Profile from './pages/Profile';
+import UploadVideo from './pages/UploadVideo';
+
+function App() {
+    return (
+        <Router>
+            <AuthProvider>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/video/:id" element={<VideoPlayer />} />
+                    <Route path="/profile/:username" element={<Profile />} />
+                    <Route path="/upload" element={<UploadVideo />} />
+                </Routes>
+            </AuthProvider>
+        </Router>
+    );
+}
+
+export default App;
+\end{lstlisting}
+
+\end{document}
