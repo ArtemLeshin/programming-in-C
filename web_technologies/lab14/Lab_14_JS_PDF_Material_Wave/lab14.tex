@@ -1,0 +1,172 @@
+% !TEX program = xelatex
+\documentclass[a4paper,14pt,oneside,openany]{memoir}
+
+%%% Задаем поля, отступы и межстрочный интервал %%%
+
+\usepackage[left=30mm, right=15mm, top=20mm, bottom=20mm]{geometry}
+\pagestyle{plain}
+\parindent=1.25cm
+\usepackage{indentfirst}
+
+%%% Задаем языковые параметры и шрифт %%%
+
+\usepackage[english,russian]{babel}
+\babelfont[russian]{rm}{Times New Roman}
+\babelfont[russian]{tt}{Courier New}
+
+%%% Задаем стиль заголовков %%%
+
+\setsecnumdepth{subsection}
+\renewcommand*{\chapterheadstart}{}
+\renewcommand*{\printchaptername}{}
+\renewcommand*{\chapnumfont}{\normalfont\bfseries}
+\renewcommand*{\afterchapternum}{\hspace{1em}}
+\renewcommand*{\printchaptertitle}{\normalfont\bfseries\centering\MakeUppercase}
+\setbeforesecskip{20pt}
+\setaftersecskip{20pt}
+\setsecheadstyle{\raggedright\normalfont\bfseries}
+\setbeforesubsecskip{20pt}
+\setaftersubsecskip{20pt}
+\setsubsecheadstyle{\raggedright\normalfont\bfseries}
+
+\setsecnumdepth{none}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+%%% Параметры переносов %%%
+
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\clubpenalty=10000
+\widowpenalty=10000
+
+%%% Параметры рисунков %%%
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\graphicspath{{photo/}}
+\captionsetup[figure]{font=small, width=\textwidth, name=Рисунок, justification=centering}
+\captiondelim{ --- }
+
+%%% Гиперссылки %%%
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    breaklinks=true
+}
+
+%%% Списки %%%
+
+\usepackage{enumitem}
+\renewcommand*{\labelitemi}{\normalfont{--}}
+\setlist{noitemsep, leftmargin=*}
+
+\begin{document}
+
+% Титульный лист
+\thispagestyle{empty}
+
+\begin{center}
+    МИНИСТЕРСТВО ЦИФРОВОГО РАЗВИТИЯ, СВЯЗИ И МАССОВЫХ \\ КОММУНИКАЦИЙ \\ РОССИЙСКОЙ ФЕДЕРАЦИИ
+
+    \vspace{20pt}
+
+    Федеральное государственное бюджетное образовательное учреждение \\ высшего образования \\
+    «Сибирский государственный университет телекоммуникаций и \\ информатики»
+
+    \vspace{20pt}
+
+    Кафедра телекоммуникационных систем и вычислительных средств \\ (ТСиВС)
+\end{center}
+
+\vfill
+
+\begin{center}
+    Лабораторная работа №14 \\
+    по дисциплине \\
+    \textit{«WEB-Технологии»}
+
+    \vspace{20pt}
+
+    по теме: \\
+    \uppercase{Скачивание файла в формате PDF. Добавление эффекта "Material Wave"}
+\end{center}
+
+\vfill
+
+\noindent Студент: \\
+\textit{Группа № ИКС-532 \hfill Лёшин А.С.}
+
+\vspace{20pt}
+
+\noindent Преподаватель: \\
+\textit{старший преподаватель \hfill Андреев А.В.}
+
+\vfill
+
+\begin{center}
+    Новосибирск 2026 г.
+\end{center}
+
+\newpage
+\setcounter{page}{2}
+\OnehalfSpacing*
+
+\section{Блок 1 Введение}
+
+Целью лабораторной работы является разработка веб-страницы с резюме, имеющей возможность редактирования текстовых элементов, экспорта в PDF и добавления визуального эффекта «Material Wave» (ripple) при кликах на элементы интерфейса.
+
+\section{Блок 2 Краткое описание выполненной работы}
+
+В ходе выполнения лабораторной работы было разработано веб-приложение «Редактируемое резюме» со следующим функционалом:
+
+\begin{itemize}
+    \item \textbf{Редактирование контента} — все текстовые поля резюме являются редактируемыми благодаря атрибуту \texttt{contenteditable};
+    \item \textbf{Автосохранение} — изменения автоматически сохраняются в \texttt{localStorage} браузера и восстанавливаются после перезагрузки страницы;
+    \item \textbf{Экспорт в PDF} — при нажатии на кнопку «Скачать PDF» текущая версия резюме преобразуется в PDF-файл и скачивается на компьютер пользователя;
+    \item \textbf{Сброс настроек} — кнопка «Сбросить» возвращает резюме к исходному состоянию;
+    \item \textbf{Эффект «Material Wave»} — при клике на любой элемент резюме появляется анимированная «волна» (ripple-эффект), характерная для Material Design;
+    \item \textbf{Адаптивная вёрстка} — страница корректно отображается на устройствах с разным разрешением экрана (ПК, планшеты, смартфоны).
+\end{itemize}
+
+Для реализации экспорта в PDF использована библиотека \texttt{html2pdf.js}. Весь остальной код написан на чистом JavaScript, CSS и HTML без использования сторонних фреймворков.
+
+\section{Блок 3 Внешний вид приложения}
+
+\subsection{3.1 Веб-страница с редактируемым резюме}
+
+На рисунке 1 представлен внешний вид веб-страницы, где пользователь может редактировать все текстовые элементы резюме.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{photo1.png}
+    \caption{Веб-страница с редактируемым резюме}
+\end{figure}
+
+\subsection{3.2 Результат экспорта в PDF}
+
+На рисунке 2 показан результат экспорта резюме в PDF-формат.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{photo2.png}
+    \caption{PDF-файл, полученный в результате экспорта}
+\end{figure}
+
+\section{Блок 4 Выводы}
+
+В результате выполнения лабораторной работы №14 было создано полноценное веб-приложение для создания и редактирования резюме. Реализованы все требуемые функции: редактирование контента, сохранение данных, экспорт в PDF и эффект Material Wave. 
+
+\section{Блок 5 Ссылки на ресурсы}
+
+\begin{itemize}
+    \item \textbf{Прямая ссылка на проект:} \url{https://github.com/ArtemLeshin/programming-in-C/tree/main/web_technologies/lab14/Lab_14_JS_PDF_Material_Wave}
+\end{itemize}
+
+\end{document}

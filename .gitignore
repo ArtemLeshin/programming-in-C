@@ -1,15 +1,74 @@
-# Системные файлы macOS
+# ==========================================
+# 1. Системные файлы операционных систем
+# ==========================================
+# macOS
 .DS_Store
 .AppleDouble
 .LSOverride
+._*
+.Spotlight-V100
+.Trashes
 
-# Виртуальное окружение Python
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.lnk
+
+# Linux
+.fuse_hidden*
+.directory
+.trash/
+
 .venv/
 venv/
 env/
-__pycache__/
+ENV/
+artifacts/
+dist/
+build/
+*.egg-info/
+
+**/__pycache__/
+*.py[cod]
+*$py.class
 
 
-# Другие временные файлы
+
+frontend/node_modules/
+node_modules/
+
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Папка локальной сборки фронтенда
+frontend/dist/
+frontend/build/
+.vite/
+
+
+
+backend/db.sqlite3
+*.sqlite3
+
+
+backend/media/*
+!backend/media/.gitkeep
+
+
+
 .idea/
 .vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+.env
+.env.local
+.env.*.local
